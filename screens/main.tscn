@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh21vudtqvma0"]
+
+[ext_resource type="Shader" path="res://shaders/05-temperance.gdshader" id="1_1fqb0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7iddu"]
+shader = ExtResource("1_1fqb0")
+shader_parameter/thickness = 0.06
+
+[sub_resource type="QuadMesh" id="QuadMesh_lje1r"]
+
+[node name="Main" type="Node2D"]
+metadata/_edit_lock_ = true
+metadata/_edit_vertical_guides_ = [75.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Card" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_7iddu")
+position = Vector2(74.75, 107.75)
+scale = Vector2(150.5, 216.5)
+mesh = SubResource("QuadMesh_lje1r")
