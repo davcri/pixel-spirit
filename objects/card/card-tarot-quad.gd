@@ -1,8 +1,8 @@
 @tool
 extends MeshInstance3D
+class_name Card3D
 
-@export_range(0, 5) var tarot: int = 0: set=set_tarot
-
+@export_range(0, 6) var tarot: int = 0: set=set_tarot
 var tarot_list: Array[String] = []
 var shader = Shader.new()
 

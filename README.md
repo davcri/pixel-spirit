@@ -7,6 +7,11 @@ This project requires [Godot 4.2](https://godotengine.org/download/archive/).
 
 ### Resources
 
-- Godot shading language: https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/shading_language.html
-- Shader utils: https://lygia.xyz/
+- [Godot shading language](https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/shading_language.html)
+- [Lygia shader library](https://lygia.xyz/)
 - https://registry.khronos.org/OpenGL-Refpages/gl4/
+
+### License
+
+- Pixel Spirit tarot: see https://github.com/patriciogonzalezvivo/PixelSpiritDeck/blob/master/LICENSE
+- Rest of the project: MIT
