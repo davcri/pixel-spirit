@@ -20,3 +20,7 @@ float stroke(float v, float from, float width) {
 	float d = step(from, v + 0.5 * width) - step(from, v - 0.5 * width);
 	return clamp(d, 0.0, 1.0);
 }
+
+float circleSDF(vec2 uv) {
+	return length(uv - 0.5) * 2.0;
+}
