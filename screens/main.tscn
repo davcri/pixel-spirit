@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh21vudtqvma0"]
+[gd_scene load_steps=7 format=3 uid="uid://dh21vudtqvma0"]
 
 [ext_resource type="PackedScene" uid="uid://dcaf58rpvhudy" path="res://objects/card3d/card3d.tscn" id="1_kutds"]
+[ext_resource type="Shader" path="res://shaders/spatials/09-the-moon.gdshader" id="2_07vqs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_njmih"]
-sky_top_color = Color(0.478431, 0.686275, 0.827451, 1)
-sky_horizon_color = Color(0.664706, 0.709804, 0.737255, 1)
-ground_bottom_color = Color(0.180392, 0.152941, 0.121569, 1)
-ground_horizon_color = Color(0.664706, 0.709804, 0.737255, 1)
+sky_top_color = Color(0.176471, 0.156863, 0.298039, 1)
+sky_horizon_color = Color(0.211765, 0.109804, 0.258824, 1)
+sky_curve = 0.130583
+ground_bottom_color = Color(0.239216, 0.180392, 0.258824, 1)
+ground_horizon_color = Color(0.211765, 0.109804, 0.258824, 1)
+ground_curve = 0.0475683
 
 [sub_resource type="Sky" id="Sky_rge20"]
 sky_material = SubResource("ProceduralSkyMaterial_njmih")
@@ -16,6 +19,14 @@ background_mode = 2
 sky = SubResource("Sky_rge20")
 tonemap_mode = 2
 glow_enabled = true
+glow_normalized = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2e2a"]
+render_priority = 0
+shader = ExtResource("2_07vqs")
+shader_parameter/line_width = 0.02
+shader_parameter/radius = 0.5
+shader_parameter/u_size = Vector2(1.74516, 3.17029)
 
 [node name="Main" type="Node3D"]
 metadata/_edit_lock_ = true
@@ -32,5 +43,10 @@ environment = SubResource("Environment_7tivn")
 
 [node name="Card" parent="." instance=ExtResource("1_kutds")]
 
+[node name="CardTarotQuad" parent="Card" index="2"]
+material_override = SubResource("ShaderMaterial_u2e2a")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 3.47302e-08, 5.13367, 0, 0)
+
+[editable path="Card"]

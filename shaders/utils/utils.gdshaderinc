@@ -15,10 +15,13 @@ vec2 ratio(in vec2 v, in vec2 s) {
                 step(s.x,s.y));
 }
 
-// stroke
 float stroke(float v, float from, float width) {
 	float d = step(from, v + 0.5 * width) - step(from, v - 0.5 * width);
 	return clamp(d, 0.0, 1.0);
+}
+
+float fill(float x, float size) {
+	return 1.0 - step(size, x);
 }
 
 float circleSDF(vec2 uv) {

@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7iddu"]
 shader = ExtResource("1_ixjqf")
 shader_parameter/line_width = 0.02
-shader_parameter/radius = 0.48
+shader_parameter/radius = 0.79
 shader_parameter/u_size = Vector2(90, 160)
 
 [sub_resource type="QuadMesh" id="QuadMesh_lje1r"]
