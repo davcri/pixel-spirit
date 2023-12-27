@@ -5,5 +5,6 @@ vec3 tarot_draw(vec2 uv, float line_width) {
 	float sdf = 0.5 + (uv.x - uv.y) * 0.5;
 	col += stroke(0.5, sdf, line_width);
 	col += stroke(0.5, (uv.x + uv.y) * 0.5, line_width);
-	return col;
+	//return col;
+	return clamp(col, 0.0, 1.0);
 }

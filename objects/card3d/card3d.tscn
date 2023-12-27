@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcaf58rpvhudy"]
+
+[ext_resource type="PackedScene" uid="uid://cgv86bptauip5" path="res://objects/card3d/asset/card.glb" id="1_pntre"]
+[ext_resource type="Shader" path="res://shaders/spatials/07-the-hanged-man.gdshader" id="2_a6h8s"]
+[ext_resource type="Script" path="res://objects/card3d/card-tarot-quad.gd" id="3_h1vtr"]
+[ext_resource type="Script" path="res://objects/card2d/shader_setter.gd" id="4_2kiug"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpxvc"]
+render_priority = 0
+shader = ExtResource("2_a6h8s")
+shader_parameter/line_width = 0.02
+shader_parameter/wave_frequency = 1.0
+shader_parameter/wave_amplitude = 0.1
+shader_parameter/wave_offset = 0.0
+shader_parameter/u_size = Vector2(1.74516, 3.1703)
+
+[sub_resource type="QuadMesh" id="QuadMesh_65j7v"]
+size = Vector2(1.745, 3.17)
+
+[node name="Card3D" instance=ExtResource("1_pntre")]
+
+[node name="CardTarotQuad" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(-4.37155e-08, 0, 1.00009, 0, 1.00009, 0, -1.00009, 0, -4.37155e-08, 0.0191725, 0, 0)
+material_override = SubResource("ShaderMaterial_fpxvc")
+mesh = SubResource("QuadMesh_65j7v")
+script = ExtResource("3_h1vtr")
+
+[node name="ShaderSetter" type="Node" parent="CardTarotQuad" index="0"]
+script = ExtResource("4_2kiug")
+tarot = 7
+target_node_path = NodePath("..")
