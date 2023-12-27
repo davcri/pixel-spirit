@@ -1,5 +1,3 @@
-//shader_type canvas_item;
-
 float pwave(float x) {
 	return (1.0 + cos(x)) * 0.5;
 }
@@ -15,4 +13,10 @@ vec2 ratio(in vec2 v, in vec2 s) {
     return mix( vec2((v.x*s.x/s.y)-(s.x*.5-s.y*.5)/s.y,v.y),
                 vec2(v.x,v.y*(s.y/s.x)-(s.y*.5-s.x*.5)/s.x),
                 step(s.x,s.y));
+}
+
+// stroke
+float stroke(float v, float from, float width) {
+	float d = step(from, v + 0.5 * width) - step(from, v - 0.5 * width);
+	return clamp(d, 0.0, 1.0);
 }

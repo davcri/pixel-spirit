@@ -1,4 +1,5 @@
 shader_type canvas_item;
+#include "res://shaders/tarot-includes/02-strength.gdshaderinc"
 
 void vertex() {}
 
@@ -7,6 +8,6 @@ float pwave(float x) {
 }
 
 void fragment() {
-	COLOR.rgb = step(0.5, UV.x - 0.15 * cos(UV.y * 4.0)) * vec3(1.0, 1.0, 1.0);
+	COLOR.rgb = tarot_draw(UV);
 	COLOR.a = 1.0;
 }

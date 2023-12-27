@@ -9,3 +9,4 @@ This project requires [Godot 4.2](https://godotengine.org/download/archive/).
 
 - Godot shading language: https://docs.godotengine.org/en/stable/tutorials/shaders/shader_reference/shading_language.html
 - Shader utils: https://lygia.xyz/
+- https://registry.khronos.org/OpenGL-Refpages/gl4/
