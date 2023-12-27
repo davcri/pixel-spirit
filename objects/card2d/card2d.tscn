@@ -1,24 +1,24 @@
 [gd_scene load_steps=6 format=3 uid="uid://bk2ggjrycp28o"]
 
-[ext_resource type="Shader" path="res://shaders/canvas_item/07-the-hanged-man.gdshader" id="1_0ilhd"]
+[ext_resource type="Shader" path="res://shaders/canvas_item/08-the-high-priestess.gdshader" id="1_b6b02"]
 [ext_resource type="Script" path="res://objects/card2d/card2d.gd" id="2_4uus1"]
 [ext_resource type="Script" path="res://objects/card2d/shader_setter.gd" id="3_pvk82"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7iddu"]
-shader = ExtResource("1_0ilhd")
-shader_parameter/line_width = 0.1
-shader_parameter/u_size = Vector2(100, 180)
+shader = ExtResource("1_b6b02")
+shader_parameter/line_width = 0.01
+shader_parameter/radius = 0.2
+shader_parameter/u_size = Vector2(90, 160)
 
 [sub_resource type="QuadMesh" id="QuadMesh_lje1r"]
-size = Vector2(100, 180)
+size = Vector2(90, 160)
 
 [node name="Card" type="MeshInstance2D"]
 material = SubResource("ShaderMaterial_7iddu")
-position = Vector2(52, 92)
 mesh = SubResource("QuadMesh_lje1r")
 script = ExtResource("2_4uus1")
 
 [node name="ShaderSetter" type="Node" parent="."]
 script = ExtResource("3_pvk82")
-tarot = 7
+tarot = 8
 target_node_path = NodePath("..")

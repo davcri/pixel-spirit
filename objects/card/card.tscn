@@ -1,16 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcaf58rpvhudy"]
+[gd_scene load_steps=7 format=3 uid="uid://dcaf58rpvhudy"]
 
 [ext_resource type="PackedScene" uid="uid://cgv86bptauip5" path="res://objects/card/asset/card.glb" id="1_e01n5"]
-[ext_resource type="Shader" path="res://shaders/spatials/05-temperance.gdshader" id="2_k8lg2"]
+[ext_resource type="Shader" path="res://shaders/spatials/08-the-high-priestess.gdshader" id="2_8w2xh"]
 [ext_resource type="Script" path="res://objects/card/card-tarot-quad.gd" id="3_xkv0e"]
+[ext_resource type="Script" path="res://objects/card2d/shader_setter.gd" id="4_o8088"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kqq7p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ci028"]
 render_priority = 0
-shader = ExtResource("2_k8lg2")
+shader = ExtResource("2_8w2xh")
 shader_parameter/line_width = 0.1
-shader_parameter/wave_frequency = 1.0
-shader_parameter/wave_amplitude = 0.1
-shader_parameter/wave_offset = 0.0
+shader_parameter/radius = 0.2
+shader_parameter/u_size = Vector2(1.8, 3.21)
 
 [sub_resource type="QuadMesh" id="QuadMesh_65j7v"]
 
@@ -18,7 +18,11 @@ shader_parameter/wave_offset = 0.0
 
 [node name="CardTarotQuad" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(-7.86805e-08, 0, 1, 0, 3.21, 0, -1.8, 0, -4.37114e-08, 0.0545191, 0, 0)
-material_override = SubResource("ShaderMaterial_kqq7p")
+material_override = SubResource("ShaderMaterial_ci028")
 mesh = SubResource("QuadMesh_65j7v")
 script = ExtResource("3_xkv0e")
-tarot = 5
+
+[node name="ShaderSetter" type="Node" parent="CardTarotQuad" index="0"]
+script = ExtResource("4_o8088")
+tarot = 8
+target_node_path = NodePath("..")
