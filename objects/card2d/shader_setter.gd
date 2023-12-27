@@ -1,7 +1,7 @@
 @tool
 extends Node
 
-@export_range(0, 7) var tarot: int = 0: set=set_tarot
+@export_range(0, 50) var tarot: int = 0: set=set_tarot
 @export_node_path("Node") var target_node_path
 
 const shader_spatials = "res://shaders/spatials/"
@@ -24,9 +24,6 @@ func update_shader():
 	var target_node = get_node(target_node_path)
 	# update tarot list
 	tarot_list = []
-	#var shaders_dir: String = shader_spatials if target_node is Card3D else shader_canvas_items
-	#print(shaders_dir)
-	#shaders_dir = shaders_dir.format([tarot_list[tarot]])
 	var includes = DirAccess.get_files_at(shader_canvas_items)
 	for i in includes:
 		tarot_list.push_back(i)
