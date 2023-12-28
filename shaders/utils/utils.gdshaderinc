@@ -15,6 +15,11 @@ vec2 ratio(in vec2 v, in vec2 s) {
                 step(s.x,s.y));
 }
 
+// hyp: edge1 < edge2
+float step_square(float edge1, float edge2, float x) {
+	return step(edge1, x) * (1.0 - step(edge2, x));
+}
+
 float stroke(float v, float from, float width) {
 	float d = step(from, v + 0.5 * width) - step(from, v - 0.5 * width);
 	return clamp(d, 0.0, 1.0);
@@ -27,3 +32,9 @@ float fill(float x, float size) {
 float circleSDF(vec2 uv) {
 	return length(uv - 0.5) * 2.0;
 }
+
+float rectSDF(vec2 uv, vec2 s) {
+	uv = uv * 2.0 - 1.0;
+	return max(abs(uv.x/s.x), abs(uv.y/s.y));
+}
+
