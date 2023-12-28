@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://bk2ggjrycp28o"]
 
-[ext_resource type="Shader" path="res://shaders/canvas_item/09-the-moon.gdshader" id="1_ixjqf"]
+[ext_resource type="Shader" path="res://shaders/canvas_item/10-the-emperor.gdshader" id="1_ukdud"]
 [ext_resource type="Script" path="res://objects/card2d/card2d.gd" id="2_4uus1"]
 [ext_resource type="Script" path="res://objects/card2d/shader_setter.gd" id="3_pvk82"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7iddu"]
-shader = ExtResource("1_ixjqf")
+shader = ExtResource("1_ukdud")
 shader_parameter/line_width = 0.02
 shader_parameter/radius = 0.79
 shader_parameter/u_size = Vector2(90, 160)
@@ -20,5 +20,5 @@ script = ExtResource("2_4uus1")
 
 [node name="ShaderSetter" type="Node" parent="."]
 script = ExtResource("3_pvk82")
-tarot = 9
+tarot = 10
 target_node_path = NodePath("..")
