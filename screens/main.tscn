@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh21vudtqvma0"]
+[gd_scene load_steps=8 format=3 uid="uid://dh21vudtqvma0"]
 
 [ext_resource type="PackedScene" uid="uid://dcaf58rpvhudy" path="res://objects/card3d/card3d.tscn" id="1_kutds"]
-[ext_resource type="Shader" path="res://shaders/spatials/09-the-moon.gdshader" id="2_07vqs"]
+[ext_resource type="Shader" path="res://shaders/spatials/11-the-hierophant.gdshader" id="2_7m5h8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_njmih"]
 sky_top_color = Color(0.176471, 0.156863, 0.298039, 1)
@@ -21,32 +21,42 @@ tonemap_mode = 2
 glow_enabled = true
 glow_normalized = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2e2a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q70bl"]
 render_priority = 0
-shader = ExtResource("2_07vqs")
+shader = ExtResource("2_7m5h8")
 shader_parameter/line_width = 0.02
-shader_parameter/radius = 0.5
-shader_parameter/u_size = Vector2(1.74516, 3.17029)
+shader_parameter/u_size = Vector2(1.85017, 3.20029)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ro0vn"]
+size = Vector2(30, 30)
 
 [node name="Main" type="Node3D"]
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [75.0]
 
 [node name="LightsSetup" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="LightsSetup"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 2.33201, -3.48122)
+transform = Transform3D(-0.414912, -0.243529, 0.876665, 0.343269, 0.850414, 0.398701, -0.842624, 0.466358, -0.269251, 1.91119, 2.33201, -3.16574)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="LightsSetup"]
 environment = SubResource("Environment_7tivn")
 
 [node name="Card" parent="." instance=ExtResource("1_kutds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70833, 0)
 
 [node name="CardTarotQuad" parent="Card" index="2"]
-material_override = SubResource("ShaderMaterial_u2e2a")
+material_override = SubResource("ShaderMaterial_q70bl")
+
+[node name="ShaderSetter" parent="Card/CardTarotQuad" index="0"]
+tarot = 11
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(3.47302e-08, 0, 1, 0, 1, 0, -1, 0, 3.47302e-08, 5.13367, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ro0vn")
 
 [editable path="Card"]
