@@ -38,3 +38,8 @@ float rectSDF(vec2 uv, vec2 s) {
 	return max(abs(uv.x/s.x), abs(uv.y/s.y));
 }
 
+float crossSDF(vec2 uv, float s) {
+	vec2 size = vec2(0.25, s);
+	return min(rectSDF(uv, size.xy), rectSDF(uv, size.yx));
+}
+

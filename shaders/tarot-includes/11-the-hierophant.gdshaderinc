@@ -2,7 +2,20 @@
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(.0);
+	float rectSDF = rectSDF(uv, vec2(1.));
+	float crossSDF = crossSDF(uv, 1.0);
 	
+	col += fill(rectSDF, 0.5); // draw a white square
+	col *= step(0.5, fract(crossSDF * 4.0)); // draw the L shaped line patterns
+	col *= step(1.0, crossSDF); // clear the internal part
+	col += fill(crossSDF, 0.5); // draw the internal white cross
+	col += stroke(rectSDF, .65, .05); // draw the inner bounding rect stroke
+	col += stroke(rectSDF, .75, .025); // draw the outer bounding rect stroke
+	
+	return clamp(col, 0.0, 1.0);
+}
+
+vec3 myTarotImpl(vec2 uv) {
 	// central cross
 	vec3 centralCross = vec3(0.);
 	float cw = 0.13; // cross width
@@ -43,6 +56,5 @@ vec3 tarot_draw(vec2 uv) {
 			deco += stroke(sUv.y, dist.y + m * float(i), s) * step_square(bot, top, sUv.x);
 		}
 	}
-	col = outlines + centralCross + deco;
-	return clamp(col, 0.0, 1.0);
+	return outlines + centralCross + deco;
 }
