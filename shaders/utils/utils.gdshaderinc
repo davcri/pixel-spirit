@@ -43,3 +43,8 @@ float crossSDF(vec2 uv, float s) {
 	return min(rectSDF(uv, size.xy), rectSDF(uv, size.yx));
 }
 
+// pct: percentage/amount
+float flip(float v, float pct) {
+	return mix(v, 1.0 - v, pct);
+}
+
