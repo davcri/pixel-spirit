@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://bk2ggjrycp28o"]
 
-[ext_resource type="Shader" path="res://shaders/canvas_item/12-the-tower.gdshader" id="1_8g123"]
+[ext_resource type="Shader" path="res://shaders/canvas_item/13-merge.gdshader" id="1_bync4"]
 [ext_resource type="Script" path="res://objects/card2d/card2d.gd" id="2_4uus1"]
 [ext_resource type="Script" path="res://objects/card2d/shader_setter.gd" id="3_pvk82"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7iddu"]
-shader = ExtResource("1_8g123")
+shader = ExtResource("1_bync4")
 shader_parameter/u_size = Vector2(90, 160)
 
 [sub_resource type="QuadMesh" id="QuadMesh_lje1r"]
@@ -16,7 +16,8 @@ material = SubResource("ShaderMaterial_7iddu")
 mesh = SubResource("QuadMesh_lje1r")
 script = ExtResource("2_4uus1")
 
-[node name="ShaderSetter" type="Node" parent="."]
+[node name="ShaderSetter" type="Node2D" parent="."]
 script = ExtResource("3_pvk82")
-tarot = 12
+tarot = 13
 target_node_path = NodePath("..")
+metadata/_edit_lock_ = true

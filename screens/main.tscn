@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dh21vudtqvma0"]
 
 [ext_resource type="PackedScene" uid="uid://dcaf58rpvhudy" path="res://objects/card3d/card3d.tscn" id="1_kutds"]
-[ext_resource type="Shader" path="res://shaders/spatials/12-the-tower.gdshader" id="2_t278f"]
+[ext_resource type="Shader" path="res://shaders/spatials/13-merge.gdshader" id="2_h1j5g"]
 
 [sub_resource type="Environment" id="Environment_7tivn"]
 tonemap_mode = 2
@@ -18,7 +18,7 @@ fog_sun_scatter = 0.05
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7w5it"]
 render_priority = 0
-shader = ExtResource("2_t278f")
+shader = ExtResource("2_h1j5g")
 shader_parameter/u_size = Vector2(1.85017, 3.20029)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ro0vn"]
@@ -72,7 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70833, 0)
 material_override = SubResource("ShaderMaterial_7w5it")
 
 [node name="ShaderSetter" parent="Card/CardTarotQuad" index="0"]
-tarot = 12
+tarot = 13
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 visible = false
