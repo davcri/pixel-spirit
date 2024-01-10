@@ -1,4 +1,5 @@
 #include "res://shaders/utils/utils.gdshaderinc"
+
 vec3 myImpl(vec2 uv, vec3 col) {
 	float line = step(0.5 * (uv.x + uv.y), 0.5);	
 	vec2 ofst = vec2(0.1, 0.0);
@@ -11,10 +12,17 @@ vec3 myImpl(vec2 uv, vec3 col) {
 	col -= c * flip(1.0 - line, 1.0);
 	return col;
 }
-	
+
+vec3 psImpl(vec2 uv, vec3 col) {
+	float vesica = vesicaSDF(uv, 0.2);
+	float line = step(0.5, (uv.x + uv.y) * 0.5);
+	col += flip(fill(vesica, 0.5), line);
+	return col;
+}
+
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	col = myImpl(uv, col);
+	col = psImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }
 

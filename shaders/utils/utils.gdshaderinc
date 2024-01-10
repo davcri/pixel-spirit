@@ -48,3 +48,9 @@ float flip(float v, float pct) {
 	return mix(v, 1.0 - v, pct);
 }
 
+// https://en.wikipedia.org/wiki/Vesica_piscis
+float vesicaSDF(vec2 uv, float w) {
+	vec2 offset = vec2(w * 0.5, 0.0);
+	return max( circleSDF(uv - offset), circleSDF(uv + offset));
+}
+
