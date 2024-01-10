@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dh21vudtqvma0"]
+[gd_scene load_steps=25 format=3 uid="uid://dh21vudtqvma0"]
 
 [ext_resource type="PackedScene" uid="uid://dcaf58rpvhudy" path="res://objects/card3d/card3d.tscn" id="1_kutds"]
+[ext_resource type="Shader" path="res://shaders/spatials/11-the-hierophant.gdshader" id="2_7m5h8"]
 [ext_resource type="Shader" path="res://shaders/spatials/13-merge.gdshader" id="2_h1j5g"]
+[ext_resource type="Shader" path="res://shaders/spatials/12-the-tower.gdshader" id="2_t278f"]
 
 [sub_resource type="Environment" id="Environment_7tivn"]
 tonemap_mode = 2
@@ -16,9 +18,136 @@ fog_light_color = Color(0.627451, 0.623529, 0.67451, 1)
 fog_light_energy = 0.39
 fog_sun_scatter = 0.05
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_swpyw"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.07
+dof_blur_far_transition = 9.87
+dof_blur_near_distance = 5.51
+dof_blur_near_transition = 3.95
+
+[sub_resource type="Animation" id="Animation_koiln"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 2.6, 5),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(3.32, 1.755, -2.59), Vector3(2.1, 1.605, -1.705), Vector3(2.1, 1.605, -1.705), Vector3(3.32, 1.755, -2.59)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 3.1, 5),
+"transitions": PackedFloat32Array(1, -2, 2, 1),
+"update": 0,
+"values": [Vector3(0, 2.19911, 0), Vector3(0, 1.37706, 0), Vector3(0, 1.37706, 0), Vector3(0, 2.19911, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Card:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.70833, 0), Vector3(0, 1.70833, 0), Vector3(0, 1.70833, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Card:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5, 2.6, 5),
+"transitions": PackedFloat32Array(-2, -1.7411, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.261799, 0), Vector3(0, 0.261799, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e77og"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.32, 1.755, -2.59)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.19911, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Card:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.70833, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Card:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q4w7n"]
+_data = {
+"RESET": SubResource("Animation_e77og"),
+"idle": SubResource("Animation_koiln")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7w5it"]
 render_priority = 0
 shader = ExtResource("2_h1j5g")
+shader_parameter/u_size = Vector2(1.85017, 3.20029)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bf52p"]
+render_priority = 0
+shader = ExtResource("2_t278f")
+shader_parameter/u_size = Vector2(1.85017, 3.20029)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkbj6"]
+render_priority = 0
+shader = ExtResource("2_7m5h8")
 shader_parameter/u_size = Vector2(1.85017, 3.20029)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ro0vn"]
@@ -45,6 +174,45 @@ metallic = 0.91
 metallic_specular = 0.53
 roughness = 0.23
 
+[sub_resource type="Curve" id="Curve_rhi62"]
+min_value = -1.0
+_data = [Vector2(0, 0.0721991), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e62mj"]
+curve = SubResource("Curve_rhi62")
+
+[sub_resource type="Curve" id="Curve_ypyvp"]
+_data = [Vector2(0, 0.0182573), 0.0, 0.0, 0, 0, Vector2(0.222958, 1), 0.0, 0.0, 0, 0, Vector2(0.801324, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_aj76i"]
+curve = SubResource("Curve_ypyvp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_syhxp"]
+lifetime_randomness = 0.06
+emission_shape = 1
+emission_sphere_radius = 6.14
+gravity = Vector3(0, -0.01, 0)
+radial_accel_max = 0.1
+tangential_accel_max = 4.0
+scale_min = 0.6
+scale_curve = SubResource("CurveTexture_aj76i")
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("CurveTexture_e62mj")
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_0n5l4"]
+emission_enabled = true
+emission = Color(1, 0.8, 0.454902, 1)
+emission_energy_multiplier = 6.37
+
+[sub_resource type="SphereMesh" id="SphereMesh_3uv88"]
+material = SubResource("ORMMaterial3D_0n5l4")
+radius = 0.012
+height = 0.025
+radial_segments = 6
+rings = 4
+
 [node name="Main" type="Node3D"]
 metadata/_edit_lock_ = true
 metadata/_edit_vertical_guides_ = [75.0]
@@ -59,11 +227,19 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="LightsSetup"]
 environment = SubResource("Environment_7tivn")
+camera_attributes = SubResource("CameraAttributesPractical_swpyw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.587785, 0, 0.809017, 0, 1, 0, -0.809017, 0, -0.587785, 3.32, 1.755, -2.59)
 current = true
 fov = 54.4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_q4w7n")
+}
+autoplay = "idle"
+speed_scale = 0.5
 
 [node name="Card" parent="." instance=ExtResource("1_kutds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70833, 0)
@@ -73,6 +249,24 @@ material_override = SubResource("ShaderMaterial_7w5it")
 
 [node name="ShaderSetter" parent="Card/CardTarotQuad" index="0"]
 tarot = 13
+
+[node name="Card2" parent="." instance=ExtResource("1_kutds")]
+transform = Transform3D(-0.111469, 0, 0.993768, 0, 1, 0, -0.993768, 0, -0.111469, -3.849, 1.708, 7.526)
+
+[node name="CardTarotQuad" parent="Card2" index="2"]
+material_override = SubResource("ShaderMaterial_bf52p")
+
+[node name="ShaderSetter" parent="Card2/CardTarotQuad" index="0"]
+tarot = 12
+
+[node name="Card3" parent="." instance=ExtResource("1_kutds")]
+transform = Transform3D(-0.0854169, 0, 0.996345, 0, 1, 0, -0.996345, 0, -0.0854169, -3.043, 1.708, 8.103)
+
+[node name="CardTarotQuad" parent="Card3" index="2"]
+material_override = SubResource("ShaderMaterial_kkbj6")
+
+[node name="ShaderSetter" parent="Card3/CardTarotQuad" index="0"]
+tarot = 11
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 visible = false
@@ -84,4 +278,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.18, 0)
 mesh = SubResource("CylinderMesh_25ppm")
 surface_material_override/0 = SubResource("StandardMaterial3D_yuyfm")
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 1024
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_syhxp")
+draw_pass_1 = SubResource("SphereMesh_3uv88")
+
 [editable path="Card"]
+[editable path="Card2"]
+[editable path="Card3"]
