@@ -54,3 +54,9 @@ float vesicaSDF(vec2 uv, float w) {
 	return max( circleSDF(uv - offset), circleSDF(uv + offset));
 }
 
+// equirectangular triangle
+float triangleSDF(vec2 uv) {
+	vec2 st = (uv * 2.0 - 1.0) * 2.0;
+	return max(abs(st.x) * 0.8660225 + st.y * 0.5, -st.y * 0.5);
+}
+

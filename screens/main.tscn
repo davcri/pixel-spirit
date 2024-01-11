@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=3 uid="uid://dh21vudtqvma0"]
 
 [ext_resource type="PackedScene" uid="uid://dcaf58rpvhudy" path="res://objects/card3d/card3d.tscn" id="1_kutds"]
-[ext_resource type="Shader" path="res://shaders/spatials/11-the-hierophant.gdshader" id="2_7m5h8"]
-[ext_resource type="Shader" path="res://shaders/spatials/13-merge.gdshader" id="2_h1j5g"]
+[ext_resource type="Shader" path="res://shaders/spatials/15-the-temple.gdshader" id="2_k65ff"]
 [ext_resource type="Shader" path="res://shaders/spatials/12-the-tower.gdshader" id="2_t278f"]
+[ext_resource type="Shader" path="res://shaders/spatials/14-hope.gdshader" id="3_b8sxl"]
 
 [sub_resource type="Environment" id="Environment_7tivn"]
 tonemap_mode = 2
@@ -24,6 +24,57 @@ dof_blur_far_distance = 0.07
 dof_blur_far_transition = 9.87
 dof_blur_near_distance = 5.51
 dof_blur_near_transition = 3.95
+
+[sub_resource type="Animation" id="Animation_e77og"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.32, 1.755, -2.59)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.19911, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Card:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.70833, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Card:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_koiln"]
 resource_name = "idle"
@@ -78,76 +129,25 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0.261799, 0), Vector3(0, 0.261799, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_e77og"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(3.32, 1.755, -2.59)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 2.19911, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Card:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.70833, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Card:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q4w7n"]
 _data = {
 "RESET": SubResource("Animation_e77og"),
 "idle": SubResource("Animation_koiln")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7w5it"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ccqvn"]
 render_priority = 0
-shader = ExtResource("2_h1j5g")
+shader = ExtResource("2_k65ff")
 shader_parameter/u_size = Vector2(1.85017, 3.20029)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bf52p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnvnq"]
+render_priority = 0
+shader = ExtResource("3_b8sxl")
+shader_parameter/u_size = Vector2(1.85017, 3.20029)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxjay"]
 render_priority = 0
 shader = ExtResource("2_t278f")
-shader_parameter/u_size = Vector2(1.85017, 3.20029)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkbj6"]
-render_priority = 0
-shader = ExtResource("2_7m5h8")
 shader_parameter/u_size = Vector2(1.85017, 3.20029)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ro0vn"]
@@ -230,9 +230,9 @@ environment = SubResource("Environment_7tivn")
 camera_attributes = SubResource("CameraAttributesPractical_swpyw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.587785, 0, 0.809017, 0, 1, 0, -0.809017, 0, -0.587785, 3.32, 1.755, -2.59)
+transform = Transform3D(-0.587781, 0, 0.80902, 0, 1, 0, -0.80902, 0, -0.587781, 3.32, 1.755, -2.59)
 current = true
-fov = 54.4
+fov = 69.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
 libraries = {
@@ -245,28 +245,25 @@ speed_scale = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70833, 0)
 
 [node name="CardTarotQuad" parent="Card" index="2"]
-material_override = SubResource("ShaderMaterial_7w5it")
-
-[node name="ShaderSetter" parent="Card/CardTarotQuad" index="0"]
-tarot = 13
+material_override = SubResource("ShaderMaterial_ccqvn")
 
 [node name="Card2" parent="." instance=ExtResource("1_kutds")]
 transform = Transform3D(-0.111469, 0, 0.993768, 0, 1, 0, -0.993768, 0, -0.111469, -3.849, 1.708, 7.526)
 
 [node name="CardTarotQuad" parent="Card2" index="2"]
-material_override = SubResource("ShaderMaterial_bf52p")
+material_override = SubResource("ShaderMaterial_jnvnq")
 
 [node name="ShaderSetter" parent="Card2/CardTarotQuad" index="0"]
-tarot = 12
+tarot = 14
 
 [node name="Card3" parent="." instance=ExtResource("1_kutds")]
 transform = Transform3D(-0.0854169, 0, 0.996345, 0, 1, 0, -0.996345, 0, -0.0854169, -3.043, 1.708, 8.103)
 
 [node name="CardTarotQuad" parent="Card3" index="2"]
-material_override = SubResource("ShaderMaterial_kkbj6")
+material_override = SubResource("ShaderMaterial_uxjay")
 
 [node name="ShaderSetter" parent="Card3/CardTarotQuad" index="0"]
-tarot = 11
+tarot = 12
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 visible = false
