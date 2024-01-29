@@ -1,0 +1,26 @@
+#include "res://shaders/utils/utils.gdshaderinc"
+
+vec3 myImpl(vec2 uv, vec3 col) {
+	float triangle = triangleSDF(uv + vec2(0.0, 0.0));
+	float rhomb = rhombSDF(uv);
+	col += fill(triangle, 0.5);
+	col -= fill(rhomb, 0.4);
+	return col;
+}
+
+vec3 psImpl(vec2 uv, vec3 col) {
+	float triangle = triangleSDF(uv + vec2(0.0, 0.0));
+	float rhomb = rhombSDF(uv);
+	col += flip(
+		fill(triangle, 0.5),
+		fill(rhomb, 0.4)
+	);
+	return col;
+}
+
+vec3 tarot_draw(vec2 uv) {
+	vec3 col = vec3(0.);
+	col = psImpl(uv, col);
+	return clamp(col, 0.0, 1.0);
+}
+
