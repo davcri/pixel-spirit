@@ -60,3 +60,9 @@ float triangleSDF(vec2 uv) {
 	return max(abs(st.x) * 0.8660225 + st.y * 0.5, -st.y * 0.5);
 }
 
+float rhombSDF(vec2 st) {
+	return max(
+		triangleSDF(st),
+		triangleSDF(vec2(st.x,1.-st.y)
+	));
+}
