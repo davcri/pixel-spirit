@@ -66,3 +66,12 @@ float rhombSDF(vec2 st) {
 		triangleSDF(vec2(st.x,1.-st.y)
 	));
 }
+
+vec2 rotate(vec2 st, float angle) {
+	mat2 m = mat2(
+		vec2(cos(angle), -sin(angle)),
+		vec2(sin(angle), cos(angle))
+	);
+	st = m * (st - vec2(0.5, 0.5));
+	return st + vec2(0.5, 0.5);
+}
