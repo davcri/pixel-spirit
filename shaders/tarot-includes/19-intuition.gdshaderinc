@@ -2,7 +2,8 @@
 
 
 vec3 myImpl(vec2 uv, vec3 col) {
-	uv = rotate(vec2(-0.06, 0.0) + uv, -0.5);
+	uv += vec2(-0.06, 0.0);
+	uv = rotate(uv, -0.5);
 	col += fill(triangleSDF(uv), 0.5);
 	col -= fill(triangleSDF(uv * vec2(0.4, 1.0) + vec2(0.3, 0.2)), 0.3);
 	return col;
