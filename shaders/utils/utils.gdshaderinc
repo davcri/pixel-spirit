@@ -20,6 +20,7 @@ float step_square(float edge1, float edge2, float x) {
 	return step(edge1, x) * (1.0 - step(edge2, x));
 }
 
+// create outline
 float stroke(float v, float from, float width) {
 	float d = step(from, v + 0.5 * width) - step(from, v - 0.5 * width);
 	return clamp(d, 0.0, 1.0);

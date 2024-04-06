@@ -21,13 +21,20 @@ func update_shader():
 		push_warning("No target node specified")
 		return
 
-	var target_node = get_node(target_node_path)
 	# update tarot list
 	tarot_list = []
 	var includes = DirAccess.get_files_at(shader_canvas_items)
 	for i in includes:
 		tarot_list.push_back(i)
 
+	# check if out of bounds
+	if tarot > tarot_list.size() - 1:
+		set_tarot(clamp(tarot, 0, tarot_list.size() - 1))
+		return
+	print("Setting ", tarot)
+
+	# assign shader
+	var target_node = get_node(target_node_path)
 	if target_node is Card3D:
 		var shader_code_file = shader_spatials + tarot_list[tarot]
 		target_node.material_override.shader = load(shader_code_file) as Shader

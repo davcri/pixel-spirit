@@ -1,9 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://dh21vudtqvma0"]
+[gd_scene load_steps=22 format=3 uid="uid://dh21vudtqvma0"]
 
 [ext_resource type="PackedScene" uid="uid://dcaf58rpvhudy" path="res://objects/card3d/card3d.tscn" id="1_kutds"]
-[ext_resource type="Shader" path="res://shaders/spatials/15-the-temple.gdshader" id="2_k65ff"]
-[ext_resource type="Shader" path="res://shaders/spatials/12-the-tower.gdshader" id="2_t278f"]
-[ext_resource type="Shader" path="res://shaders/spatials/14-hope.gdshader" id="3_b8sxl"]
 
 [sub_resource type="Environment" id="Environment_7tivn"]
 tonemap_mode = 2
@@ -135,20 +132,11 @@ _data = {
 "idle": SubResource("Animation_koiln")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ccqvn"]
-render_priority = 0
-shader = ExtResource("2_k65ff")
-shader_parameter/u_size = Vector2(1.85017, 3.20029)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ny6yy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnvnq"]
-render_priority = 0
-shader = ExtResource("3_b8sxl")
-shader_parameter/u_size = Vector2(1.85017, 3.20029)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5ljy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxjay"]
-render_priority = 0
-shader = ExtResource("2_t278f")
-shader_parameter/u_size = Vector2(1.85017, 3.20029)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykb06"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ro0vn"]
 size = Vector2(500, 500)
@@ -245,13 +233,13 @@ speed_scale = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70833, 0)
 
 [node name="CardTarotQuad" parent="Card" index="2"]
-material_override = SubResource("ShaderMaterial_ccqvn")
+material_override = SubResource("ShaderMaterial_ny6yy")
 
 [node name="Card2" parent="." instance=ExtResource("1_kutds")]
 transform = Transform3D(-0.111469, 0, 0.993768, 0, 1, 0, -0.993768, 0, -0.111469, -3.849, 1.708, 7.526)
 
 [node name="CardTarotQuad" parent="Card2" index="2"]
-material_override = SubResource("ShaderMaterial_jnvnq")
+material_override = SubResource("ShaderMaterial_m5ljy")
 
 [node name="ShaderSetter" parent="Card2/CardTarotQuad" index="0"]
 tarot = 14
@@ -260,7 +248,7 @@ tarot = 14
 transform = Transform3D(-0.0854169, 0, 0.996345, 0, 1, 0, -0.996345, 0, -0.0854169, -3.043, 1.708, 8.103)
 
 [node name="CardTarotQuad" parent="Card3" index="2"]
-material_override = SubResource("ShaderMaterial_uxjay")
+material_override = SubResource("ShaderMaterial_ykb06")
 
 [node name="ShaderSetter" parent="Card3/CardTarotQuad" index="0"]
 tarot = 12
