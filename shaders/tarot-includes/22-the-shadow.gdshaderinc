@@ -9,17 +9,25 @@ vec3 myImpl(vec2 uv, vec3 col) {
 	col += stroke(rectSDF(rotate(uv + vec2(0., -ofst), radians(-45)),s), 1.0, .04);
 	col -= fill(rectSDF(rotate(uv + vec2(0., -ofst), radians(-45)), s - 0.009), 1.0);
 
-	return col;
+	return clamp(col, vec3(0.), vec3(1.));;
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
+	vec2 st = rotate(vec2(uv.x, 1.0 - uv.y), radians(45.));
+	vec2 s = vec2(1.);
+	col += fill(rectSDF(st - .025, s), .4);
+	col += fill(rectSDF(st + 0.025, s), .4);
+	col = clamp(col, vec3(0.), vec3(1.));
+	//col = vec3(0.);
+	col *= step(.38, rectSDF(st + 0.025, s));
+
 	return col;
 }
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	col = myImpl(uv, col);
-	//col = psImpl(uv, col);
+	//col = myImpl(uv, col);
+	col = psImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }
 
