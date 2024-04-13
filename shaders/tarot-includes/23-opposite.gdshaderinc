@@ -17,13 +17,25 @@ vec3 myImpl(vec2 uv, vec3 col) {
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
+	vec2 st = rotate(uv, radians(-45.));
+	vec2 s = vec2(1.);
+	float o = 0.05;
+
+	col += flip(
+		fill(rectSDF(st - o, s), .4),
+		fill(rectSDF(st + o, s), .4)
+	);
+
+	col += fill(rectSDF(st - o, s), .4);
+	col += fill(rectSDF(st + o, s), .4);
+
 	return col;
 }
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	col = myImpl(uv, col);
-	//col = psImpl(uv, col);
+	//col = myImpl(uv, col);
+	col = psImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }
 
