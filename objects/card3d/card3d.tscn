@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dcaf58rpvhudy"]
 
 [ext_resource type="PackedScene" uid="uid://cgv86bptauip5" path="res://objects/card3d/asset/card.glb" id="1_pntre"]
-[ext_resource type="Shader" path="res://shaders/spatials/22-the-shadow.gdshader" id="2_y4wt5"]
+[ext_resource type="Shader" path="res://shaders/spatials/23-opposite.gdshader" id="2_ax8m1"]
 [ext_resource type="Script" path="res://objects/card3d/card-tarot-quad.gd" id="3_h1vtr"]
 [ext_resource type="Script" path="res://objects/card2d/shader_setter.gd" id="4_2kiug"]
 
@@ -11,9 +11,9 @@ cull_mode = 2
 albedo_color = Color(0.126659, 0.126659, 0.126659, 1)
 roughness = 0.4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldwp1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5etk7"]
 render_priority = 0
-shader = ExtResource("2_y4wt5")
+shader = ExtResource("2_ax8m1")
 shader_parameter/u_size = Vector2(1.85017, 3.20029)
 
 [sub_resource type="QuadMesh" id="QuadMesh_65j7v"]
@@ -26,11 +26,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_h4abf")
 
 [node name="CardTarotQuad" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(-4.37155e-08, 0, 1.00009, 0, 1.00009, 0, -1.00009, 0, -4.37155e-08, 0.0152398, 0, 0)
-material_override = SubResource("ShaderMaterial_ldwp1")
+material_override = SubResource("ShaderMaterial_5etk7")
 mesh = SubResource("QuadMesh_65j7v")
 script = ExtResource("3_h1vtr")
 
 [node name="ShaderSetter" type="Node" parent="CardTarotQuad" index="0"]
 script = ExtResource("4_2kiug")
-tarot = 22
+tarot = 23
 target_node_path = NodePath("..")
