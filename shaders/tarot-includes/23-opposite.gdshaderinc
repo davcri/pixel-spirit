@@ -26,9 +26,6 @@ vec3 psImpl(vec2 uv, vec3 col) {
 		fill(rectSDF(st + o, s), .4)
 	);
 
-	col += fill(rectSDF(st - o, s), .4);
-	col += fill(rectSDF(st + o, s), .4);
-
 	return col;
 }
 
