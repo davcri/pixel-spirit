@@ -84,3 +84,8 @@ float polySDF(vec2 uv, int V) {
 	float v = TAU / float(V);
 	return cos(floor(.5 + a/v) * v-a)*r;
 }
+
+float hexSDF(vec2 uv) {
+	uv = abs(uv * 2. - 1.);
+	return max(abs(uv.y), uv.x * 0.866025 + uv.y * 0.5);
+}
