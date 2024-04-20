@@ -15,19 +15,26 @@ vec3 myImpl(vec2 uv, vec3 col) {
 	col -= stroke(flippedSdf, .3, space * 0.8);
 	col -= fill(flippedSdf, 0.15);
 
-	//col += flip(fill(sdf, .5), fill(sdf, .6));
-
 	return col;
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
+	float d1 = polySDF(uv, 5);
+	vec2 vu = vec2(uv.x, 1. -uv.y);
+	float d2 = polySDF(vu, 5);
+	col +=
+		fill(d1, .75) *
+		fill(fract(d1 * 5.), .5);
+	col -=
+		fill(d1, .6) *
+		fill(fract(d2 * 4.9), .45);
 	return col;
 }
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	col = myImpl(uv, col);
-	//col = psImpl(uv, col);
+	//col = myImpl(uv, col);
+	col = psImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }
 
