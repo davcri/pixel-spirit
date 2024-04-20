@@ -76,3 +76,11 @@ vec2 rotate(vec2 st, float angle) {
 	st = m * (st - vec2(0.5, 0.5));
 	return st + vec2(0.5, 0.5);
 }
+
+float polySDF(vec2 uv, int V) {
+	uv = uv *2. - 1.;
+	float a = atan(uv.x, uv.y) + PI;
+	float r = length(uv);
+	float v = TAU / float(V);
+	return cos(floor(.5 + a/v) * v-a)*r;
+}
