@@ -90,6 +90,11 @@ float hexSDF(vec2 uv) {
 	return max(abs(uv.y), uv.x * 0.866025 + uv.y * 0.5);
 }
 
+float raysSDF(vec2 uv, int N) {
+	uv -= .5;
+	return fract(atan(uv.y, uv.x)/ TAU * float(N));
+}
+
 float starSDF(vec2 uv, int V, float s) {
 	uv = uv * 4. - 2.;
 	float a = atan(uv.y, uv.x) / TAU;
