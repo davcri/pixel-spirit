@@ -9,13 +9,18 @@ vec3 myImpl(vec2 uv, vec3 col) {
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
+	col += stroke(circleSDF(uv), .8, .05);
+	uv.y = 1.-uv.y;
+	float s = starSDF(uv.yx, 5, .1);
+	col *= step(.7, s);
+	col += stroke(s, .4, .1);
 	return col;
 }
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	col = myImpl(uv, col);
-	//col = psImpl(uv, col);
+	//col = myImpl(uv, col);
+	col = psImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }
 
