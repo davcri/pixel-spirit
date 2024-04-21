@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 #include "res://shaders/utils/utils.gdshaderinc"
-#include "res://shaders/tarot-includes/27-bundle.gdshaderinc"
+#include "res://shaders/tarot-includes/28-the-devil.gdshaderinc"
 
 uniform vec2 u_size; // size of the quad mesh
 
