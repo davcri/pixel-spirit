@@ -1,4 +1,4 @@
-shader_type canvas_item;
+shader_type spatial;
 
 #include "res://shaders/utils/utils.gdshaderinc"
 #include "res://shaders/tarot-includes/28-the-devil.gdshaderinc"
@@ -6,7 +6,8 @@ shader_type canvas_item;
 uniform vec2 u_size; // size of the quad mesh
 
 void fragment() {
-	vec2 rUV = ratio(UV, u_size);
-	COLOR.rgb = tarot_draw(rUV);
-	COLOR.a = 1.0;
+	vec2 fUV = vec2(UV.x, 1.0 - UV.y);
+	vec2 rUV = ratio(fUV, u_size);
+	ALBEDO.rgb = tarot_draw(rUV);
+	ALPHA = ALBEDO.r;
 }

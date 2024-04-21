@@ -89,3 +89,12 @@ float hexSDF(vec2 uv) {
 	uv = abs(uv * 2. - 1.);
 	return max(abs(uv.y), uv.x * 0.866025 + uv.y * 0.5);
 }
+
+float starSDF(vec2 uv, int V, float s) {
+	uv = uv * 4. - 2.;
+	float a = atan(uv.y, uv.x) / TAU;
+	float seg = a * float(V);
+	a = ((floor(seg) + 0.5) / float(V) +
+		mix(s, -s, step(.5, fract(seg)))) * TAU;
+	return abs(dot(vec2(cos(a), sin(a)), uv));
+}
