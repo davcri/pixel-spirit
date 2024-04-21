@@ -19,12 +19,19 @@ vec3 myImpl(vec2 uv, vec3 col) {
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
+	col += stroke(raysSDF(uv, 8), .5, .15);
+	float inner = starSDF(uv.xy, 6, .09);
+	float outer = starSDF(uv.yx, 6, .09);
+	col *= step(.7, outer);
+	col += fill(outer, .5);
+	col -= stroke(inner, .25, .06);
+	col += stroke(outer, .6, .05);
 	return col;
 }
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	col = myImpl(uv, col);
-	//col = psImpl(uv, col);
+	//col = myImpl(uv, col);
+	col = psImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }
