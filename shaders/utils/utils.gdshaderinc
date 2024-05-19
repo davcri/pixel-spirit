@@ -116,3 +116,8 @@ vec3 bridge(vec3 c, float d, float s, float w) {
 	c *= 1. - stroke(d, s, w* 2.);
 	return c + stroke(d, s, w);
 }
+
+// inverse step
+float istep(float edge, float x) {
+	return step(x, edge);
+}
