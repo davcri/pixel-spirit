@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://bk2ggjrycp28o"]
 
-[ext_resource type="Shader" path="res://shaders/canvas_item/34-the-lovers.gdshader" id="1_xigfn"]
+[ext_resource type="Shader" path="res://shaders/canvas_item/35-the-magician.gdshader" id="1_1ywtp"]
 [ext_resource type="Script" path="res://objects/card2d/card2d.gd" id="2_4uus1"]
 [ext_resource type="Script" path="res://objects/card2d/shader_setter.gd" id="3_pvk82"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7iddu"]
-shader = ExtResource("1_xigfn")
+shader = ExtResource("1_1ywtp")
 shader_parameter/u_size = Vector2(90, 160)
 
 [sub_resource type="QuadMesh" id="QuadMesh_lje1r"]
@@ -18,6 +18,6 @@ script = ExtResource("2_4uus1")
 
 [node name="ShaderSetter" type="Node2D" parent="."]
 script = ExtResource("3_pvk82")
-tarot = 34
+tarot = 35
 target_node_path = NodePath("..")
 metadata/_edit_lock_ = true
