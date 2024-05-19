@@ -103,3 +103,11 @@ float starSDF(vec2 uv, int V, float s) {
 		mix(s, -s, step(.5, fract(seg)))) * TAU;
 	return abs(dot(vec2(cos(a), sin(a)), uv));
 }
+
+float heartSDF(vec2 uv) {
+	uv -= vec2(.5, .8);
+	float r = length(uv) * 5.;
+	uv = normalize(uv);
+	return r - ((uv.y * pow(abs(uv.x), 0.67)) /
+		(uv.y + 1.5) - 2.0 * uv.y + 1.26);
+}
