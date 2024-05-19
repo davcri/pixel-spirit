@@ -111,3 +111,8 @@ float heartSDF(vec2 uv) {
 	return r - ((uv.y * pow(abs(uv.x), 0.67)) /
 		(uv.y + 1.5) - 2.0 * uv.y + 1.26);
 }
+
+vec3 bridge(vec3 c, float d, float s, float w) {
+	c *= 1. - stroke(d, s, w* 2.);
+	return c + stroke(d, s, w);
+}

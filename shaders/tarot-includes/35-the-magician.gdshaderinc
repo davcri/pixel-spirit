@@ -15,12 +15,18 @@ vec3 myImpl(vec2 uv, vec3 col) {
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
+	uv.x = flip(uv.x, step(.5, uv.y));
+	vec2 offset = vec2(.15, .0);
+	float left = circleSDF(uv + offset);
+	float right = circleSDF(uv - offset);
+	col += stroke(left, .4, .075);
+	col = bridge(col, right, .4, .075);
 	return col;
 }
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	col = myImpl(uv, col);
-	//col = psImpl(uv, col);
+	//col = myImpl(uv, col);
+	col = psImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }
