@@ -13,6 +13,6 @@ zoom = Vector2(4, 4)
 [node name="Card" parent="." instance=ExtResource("1_iedjh")]
 
 [node name="ShaderSetter" parent="Card" index="0"]
-tarot = 45
+tarot = 46
 
 [editable path="Card"]

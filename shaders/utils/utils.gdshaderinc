@@ -125,3 +125,11 @@ float istep(float edge, float x) {
 vec2 scale(vec2 uv, vec2 s) {
 	return (uv - .5) * s + .5;
 }
+
+float floverSDF(vec2 uv, int N) {
+	uv = uv * 2. - 1.;
+	float r = length(uv) * 2.;
+	float a = atan(uv.y, uv.x);
+	float v = float (N) * .5;
+	return 1. - (abs(cos(a *v)) * .5 + .5) / r;
+}
