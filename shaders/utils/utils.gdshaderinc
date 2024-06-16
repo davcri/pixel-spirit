@@ -133,3 +133,10 @@ float floverSDF(vec2 uv, int N) {
 	float v = float (N) * .5;
 	return 1. - (abs(cos(a *v)) * .5 + .5) / r;
 }
+
+float spiralSDF(vec2 uv, float t) {
+	uv -= .5;
+	float r = dot(uv, uv);
+	float a = atan(uv.y, uv.x);
+	return abs(sin(fract(log(r) * t + a * 0.159)));
+}
