@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgtpughjf4cob"]
+
+[ext_resource type="Script" path="res://screens/main2d.gd" id="1_ghgcq"]
+[ext_resource type="PackedScene" uid="uid://bk2ggjrycp28o" path="res://objects/card2d/card2d.tscn" id="2_ugsuq"]
+[ext_resource type="Shader" path="res://shaders/extra/02-sdf-dof/02-sdf-dof.canvasitem.gdshader" id="3_fdslh"]
+[ext_resource type="Script" path="res://objects/mouse_inertia.gd" id="4_gkxrb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x124g"]
+shader = ExtResource("3_fdslh")
+shader_parameter/u_size = Vector2(200, 200)
+shader_parameter/u_mouse = Vector2(0, 0)
+shader_parameter/u_mouse_inertia = null
+shader_parameter/u_time = null
+
+[sub_resource type="QuadMesh" id="QuadMesh_pwjsp"]
+size = Vector2(200, 200)
+
+[sub_resource type="GDScript" id="GDScript_pwk0e"]
+script/source = "@tool
+extends MeshInstance2D
+
+@onready var shader: ShaderMaterial = material
+
+var mouse = Vector2()
+var m = Vector2()
+
+
+func get_size() -> Vector2:
+	return (mesh as QuadMesh).size * scale
+
+
+func _process(delta):
+	if !Engine.is_editor_hint():
+		var cam = get_viewport().get_camera_2d()
+		if cam:
+			var remap_rect = get_camera_rect(cam) # TODO: this should be refactored to take translation and rotation into account
+			remap_rect = get_size()
+			m = get_global_mouse_position() + remap_rect / 2
+			m /= remap_rect
+			m.y = 1. - m.y
+			#m.x = clamp(m.x, 0., 1.)
+			#m.y = clamp(m.y, 0., 1.)
+		var inertia = get_node(\"MouseInertia\").inertia
+		if inertia != null:
+			shader.set_shader_parameter(\"u_mouse_inertia\", inertia)
+	shader.set_shader_parameter(\"u_size\", get_size()) # TODO: set uniform only when size changes
+	shader.set_shader_parameter(\"u_mouse\", m)
+	shader.set_shader_parameter(\"u_time\", Time.get_ticks_msec())
+
+
+func get_camera_rect(cam: Camera2D):
+	return get_canvas_transform().affine_inverse().basis_xform(get_viewport_rect().size)
+"
+
+[node name="Main2d" type="Node2D"]
+script = ExtResource("1_ghgcq")
+metadata/_edit_lock_ = true
+
+[node name="Card" parent="." instance=ExtResource("2_ugsuq")]
+material = SubResource("ShaderMaterial_x124g")
+mesh = SubResource("QuadMesh_pwjsp")
+script = SubResource("GDScript_pwk0e")
+
+[node name="ShaderSetter" parent="Card" index="0"]
+process_mode = 4
+
+[node name="MouseInertia" type="Node" parent="Card"]
+script = ExtResource("4_gkxrb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[editable path="Card"]
