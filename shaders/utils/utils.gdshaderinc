@@ -121,3 +121,7 @@ vec3 bridge(vec3 c, float d, float s, float w) {
 float istep(float edge, float x) {
 	return step(x, edge);
 }
+
+vec2 scale(vec2 uv, vec2 s) {
+	return (uv - .5) * s + .5;
+}
