@@ -1,6 +1,6 @@
 # Pixel Spirit
 
-[Pixel Spirit deck](https://pixelspiritdeck.com/) tarots implemented in Godot 4.
+[Pixel Spirit deck](https://pixelspiritdeck.com/) tarot cards implemented in Godot 4.
 
 https://github.com/davcri/pixel-spirit/assets/6860637/348752e0-a60d-4449-b0a8-c04fd3fc68e9
 
