@@ -4,6 +4,10 @@
 
 https://github.com/davcri/pixel-spirit/assets/6860637/348752e0-a60d-4449-b0a8-c04fd3fc68e9
 
+
+https://github.com/davcri/pixel-spirit/assets/6860637/816af57a-9b62-4433-8af4-67be736ff14a
+
+
 ## Tarot shaders
 
 - Tarot 2D shaders are in `shaders/canvas_item/*.gdshader` files
