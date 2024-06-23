@@ -23,6 +23,10 @@ vec3 tarot_draw(vec2 uv) {
 }
 ```
 
+> [!NOTE]
+> In the repository, you'll often see `psImpl`, short for `Pixel Spirit Implementation`.  
+> This abbreviation appears in commit messages introducing the original implementation and in shader functions to distinguish my work from the original.
+
 ## SDFs and utils
 
 All the required SDFs and util functions are in
