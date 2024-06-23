@@ -1,9 +1,10 @@
 # Pixel Spirit
 
-[Pixel Spirit deck](https://pixelspiritdeck.com/) tarot cards implemented in Godot 4.
+[Pixel Spirit](https://pixelspiritdeck.com/) tarot shaders implemented in Godot 4.
+
+> The PixelSpirit Elements Deck is a tarot deck for learning GLSL shaders. Each PixelSpirit card has a visual element and its GLSL shader code. The cards are ordered from simplest to most complex, building a library of code functions that combine like a book of spells to form an infinite visual language. 
 
 https://github.com/davcri/pixel-spirit/assets/6860637/348752e0-a60d-4449-b0a8-c04fd3fc68e9
-
 
 https://github.com/davcri/pixel-spirit/assets/6860637/816af57a-9b62-4433-8af4-67be736ff14a
 
