@@ -31,27 +31,14 @@ vec3 myImpl(vec2 uv, vec3 col) {
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
-	float bg = starSDF(uv, 16, .1);
-	col += fill(bg, 1.3);
-
-	float l = 0.;
-	for (float i=0.; i< 8.; i++) {
-		vec2 xy = rotate(uv, PI * 0.25 * i);
-		xy.y -= .3;
-		float tri = polySDF(xy, 3);
-		col += fill(tri, .3);
-		l += stroke(tri, .3, .03);
-	}
-	col *= 1. - l;
-	float c = polySDF(uv, 8);
-	col -= stroke(c, .15, .04);
+	// https://github.com/patriciogonzalezvivo/PixelSpiritDeck/blob/master/LICENSE
 	return col;
 }
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	//col = myImpl(uv, col);
-	col = psImpl(uv, col);
+	col = myImpl(uv, col);
+	//col = psImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }
 

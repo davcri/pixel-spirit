@@ -2,49 +2,28 @@
 
 vec3 myImpl(vec2 uv, vec3 col) {
 	float ow = .08; // outline width
-	float rsize = .4; // rhomboid size
+	float rsize = .8; // rhomboid size
 
-	vec2 st = rotate(uv + vec2(0., .25), radians(45.0));
-	col += flip(
-		fill(rectSDF(st, vec2(0.5)), rsize),
-		fill(rectSDF(st, vec2(0.5)), rsize - ow)
-	);
+	vec2 st = rotate(uv, radians(45.0));
+	col += stroke(rectSDF(st, vec2(0.5)), rsize, ow);
+	col -= fill(rectSDF(st + vec2(0.1, .1), vec2(.2, .2)), 1.4);
 
-	st = rotate(uv + vec2(0.16, 0.07), radians(45.));
-	rsize = 0.45;
-	vec2 rrsize = vec2(0.9, 0.5);
-	col += flip(
-		fill(rectSDF(st, rrsize), rsize),
-		fill(rectSDF(st, rrsize), rsize - ow * rrsize.x)
-	);
+	col = clamp(col, vec3(0.), vec3(1.));
 
-	st = rotate(uv + vec2(-0.16, 0.07), radians(45.));
-	rsize =0.45;
-	col += flip(
-		fill(rectSDF(st, vec2(0.5)), rsize),
-		fill(rectSDF(st, vec2(0.5)), rsize - ow)
-	);
+	col += stroke(rectSDF(st + vec2(.17), vec2(.5)), rsize, ow) * (step(uv.y, .8) * step(.38, uv.y));
+	col += stroke(rectSDF(st + vec2(.12), vec2(.5)), rsize * .45, ow);
 
 	return col;
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
-	vec2 st = rotate(uv, radians(45.));
-	float r1 = rectSDF(st, vec2(1.));
-	float r2 = rectSDF(st + 0.15, vec2(1.));
-
-	col += stroke(r1, .5, .05);
-	col *= step(.325, r2);
-	col += stroke(r2, .325, .05) * fill(r1, .525);
-	col += stroke(r2, .2, .05);
-
 	return col;
 }
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	//col = myImpl(uv, col);
-	col = psImpl(uv, col);
+	col = myImpl(uv, col);
+	//col = psImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }
 

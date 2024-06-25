@@ -10,16 +10,13 @@ vec3 myImpl(vec2 uv, vec3 col) {
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
-	float triangle = triangleSDF(uv + vec2(0.0, 0.15));
-	col += stroke(circleSDF(uv), 0.5, 0.1);
-	col *= step(0.45, triangle);
-	col += fill(triangle, .32);
+	// https://github.com/patriciogonzalezvivo/PixelSpiritDeck/blob/master/LICENSE
 	return col;
 }
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	col = psImpl(uv, col);
+	col = myImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }
 

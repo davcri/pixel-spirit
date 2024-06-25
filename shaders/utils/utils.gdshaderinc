@@ -1,3 +1,7 @@
+/**
+* See Lygia's LICENSE.md : https://github.com/patriciogonzalezvivo/lygia/blob/main/LICENSE.md
+*/
+
 float pwave(float x) {
 	return (1.0 + cos(x)) * 0.5;
 }

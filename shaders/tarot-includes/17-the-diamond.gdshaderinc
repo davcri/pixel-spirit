@@ -10,6 +10,7 @@ vec3 myImpl(vec2 uv, vec3 col) {
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
+	// https://github.com/patriciogonzalezvivo/PixelSpiritDeck/blob/master/LICENSE
 	return col;
 }
 

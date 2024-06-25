@@ -5,6 +5,7 @@ vec3 myImpl(vec2 uv, vec3 col) {
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
+	// https://github.com/patriciogonzalezvivo/PixelSpiritDeck/blob/master/LICENSE
 	col += stroke(circleSDF(uv), .8, .08);
 	col += fill(circleSDF(uv + vec2(0., -.1)), .27);
 	col += fill(circleSDF(uv + vec2(.1, 0.1)), .27);

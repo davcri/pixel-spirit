@@ -6,11 +6,11 @@ https://github.com/davcri/pixel-spirit/assets/6860637/348752e0-a60d-4449-b0a8-c0
 
 ## Tarot shaders
 
-- Tarot 2D shaders are in `shaders/canvas_item/*.gdshader` files
-- Tarot 3D shaders are in `shaders/spatials/*.gdshader` files
 - Each file in `shaders/tarot-includes/*.gdshaderinc` has a `tarot_draw`
   function. EG:
   [01-justice.gdshaderinc](./shaders/tarot-includes/01-justice.gdshaderinc):
+- Godot 2D shaders are in `shaders/canvas_item/*.gdshader` files
+- Godot 3D shaders are in `shaders/spatials/*.gdshader` files
 
 ```
 vec3 tarot_draw(vec2 uv) {
@@ -22,7 +22,10 @@ vec3 tarot_draw(vec2 uv) {
 
 All the required SDFs and util functions are in
 [utils.gdshaderinc](./shaders/utils/utils.gdshaderinc) which can be simply copy-pasted in other
-Godot projects.
+Godot projects (there are some functions form Lygia's source code so make sure
+to read its [license][lygia-license])
+
+[lygia-license]: https://github.com/patriciogonzalezvivo/lygia/blob/main/LICENSE.md
 
 ---
 

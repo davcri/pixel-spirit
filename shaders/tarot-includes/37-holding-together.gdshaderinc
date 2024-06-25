@@ -20,20 +20,13 @@ vec3 myImpl(vec2 uv, vec3 col) {
 }
 
 vec3 psImpl(vec2 uv, vec3 col) {
-	uv.x = mix(1. - uv.x, uv.x, step(.5, uv.y));
-	vec2 o = vec2(.05, .0);
-	vec2 s = vec2(1.);
-	float a = radians(45.);
-	float l = rectSDF(rotate(uv + o, a), s);
-	float r = rectSDF(rotate(uv - o, -a), s);
-	col += stroke(l, .145, .098);
-	col = bridge(col, r, .145, .098);
+	// https://github.com/patriciogonzalezvivo/PixelSpiritDeck/blob/master/LICENSE
 	return col;
 }
 
 vec3 tarot_draw(vec2 uv) {
 	vec3 col = vec3(0.);
-	//col = myImpl(uv, col);
-	col = psImpl(uv, col);
+	col = myImpl(uv, col);
+	//col = psImpl(uv, col);
 	return clamp(col, 0.0, 1.0);
 }

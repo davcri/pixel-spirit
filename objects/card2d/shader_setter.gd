@@ -1,7 +1,7 @@
 @tool
 extends Node
 
-@export_range(0, 50) var tarot: int = 0: set=set_tarot
+@export_range(0, 50) var tarot: int = 0: set = set_tarot
 @export_node_path("Node") var target_node_path
 
 const shader_spatials = "res://shaders/spatials/"
@@ -10,11 +10,13 @@ const shader_canvas_items = "res://shaders/canvas_item/"
 var tarot_list: Array[String] = []
 var shader = Shader.new()
 
+func _ready():
+	await get_tree().process_frame
+	update_shader()
 
 func set_tarot(t: int):
 	tarot = t
 	update_shader()
-
 
 func update_shader():
 	if (!target_node_path):
